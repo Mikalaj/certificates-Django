@@ -31,11 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
-	'certs.apps.CertsConfig',
-=======
     'certs.apps.CertsConfig',
->>>>>>> de00bd781aeb6663ab05442220bdf295d1d8f6c9
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-DATE_INPUT_FORMATS = [
+"""DATE_INPUT_FORMATS = [
     '%d %B',                            # '25 October',
     '%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y', # '2006-10-25', '10/25/2006', '10/25/06'
     '%b %d %Y', '%b %d, %Y',            # 'Oct 25 2006', 'Oct 25, 2006'
@@ -132,3 +128,4 @@ DATE_INPUT_FORMATS = [
     '%B %d %Y', '%B %d, %Y',            # 'October 25 2006', 'October 25, 2006'
     '%d %B %Y', '%d %B, %Y',            # '25 October 2006', '25 October, 2006'
     ]
+"""
