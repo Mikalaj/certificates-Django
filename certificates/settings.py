@@ -31,7 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
 	'certs.apps.CertsConfig',
+=======
+    'certs.apps.CertsConfig',
+>>>>>>> de00bd781aeb6663ab05442220bdf295d1d8f6c9
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
