@@ -27,7 +27,15 @@ class Baptism(Certificate):
     saint_date = models.DateField(verbose_name="Дзень Анёла")
 
 class Wedding(Certificate):
-    pass
+    fiance_name = models.CharField(verbose_name="Імя жаніха", max_length=30)
+    fiance_middle_name = models.CharField(verbose_name="Імя па бацьку жаніха", max_length=30)
+    fiance_surname = models.CharField(verbose_name="Прозвішча жаніха", max_length=30)
+    fiancee_name = models.CharField(verbose_name="Імя нявесты", max_length=30)
+    fiancee_middle_name = models.CharField(verbose_name="Імя па бацьку нявесты", max_length=30)
+    fiancee_surname = models.CharField(verbose_name="Прозвішча нявесты", max_length=30)
+    witness1 = models.CharField(verbose_name="Сведка №1", max_length=100)
+    witness2 = models.CharField(verbose_name="Сведка №2", max_length=100)
+    
 
 
 
