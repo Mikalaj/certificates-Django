@@ -9,4 +9,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name="index"),
+    path('wedding/<int:wedding_id>', views.wedding, name="wedding")
 ]
