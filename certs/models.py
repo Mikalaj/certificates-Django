@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-from datetime import date
 
 
 # Create your models here.
@@ -43,11 +42,12 @@ class Clergy(models.Model):
 class Certificate(models.Model):
     class Meta:
         abstract = True
+        ordering = ["-date"]
 
     date = models.DateField(verbose_name=_('Дата'))
     number = models.IntegerField(verbose_name=_('Нумар'), unique=True)
     priest = models.ForeignKey(Clergy, verbose_name=_('Святар'), on_delete=models.CASCADE)
-    certificate = models.FileField(verbose_name=_('Файл пасведчання'), upload_to='certificates/%Y/%m/%d/', default='',
+    certificate = models.FileField(verbose_name=_('Файл пасведчання'), upload_to='certificates/%Y/%m/%d/',
                                    blank=True, null=True, unique=True)
 
 
@@ -56,10 +56,10 @@ class Baptism(Certificate):
     baptized_middle_name = models.CharField(verbose_name=_("Імя па бацьку ахрышчанага"), max_length=30, default='',
                                             blank=True)
     baptized_surname = models.CharField(verbose_name=_("Прозвішча ахрышчанага"), max_length=30)
-    godfather = models.CharField(verbose_name=_("Хросны бацька"), max_length=100, null=True)
-    godmother = models.CharField(verbose_name=_("Хросная маці"), max_length=100, null=True)
-    saint_name = models.CharField(verbose_name=_("Імя святога"), max_length=300, null=True)
-    saint_date = models.DateField(verbose_name=_("Дзень Анёла"), null=True)
+    godfather = models.CharField(verbose_name=_("Хросны бацька"), max_length=100, null=True, blank=True)
+    godmother = models.CharField(verbose_name=_("Хросная маці"), max_length=100, null=True, blank=True)
+    saint_name = models.CharField(verbose_name=_("Імя святога"), max_length=300, null=True, blank=True)
+    saint_date = models.DateField(verbose_name=_("Дзень Анёла"), null=True, blank=True)
 
     def __str__(self):
         return "{} {} {}".format(self.baptized_name,
@@ -70,6 +70,7 @@ class Baptism(Certificate):
         verbose_name = _("Хрышчэнне")
         verbose_name_plural = _("Хрышчэнні")
         unique_together = ('baptized_name', 'baptized_middle_name', 'baptized_surname')
+        ordering = ["-date"]
 
 
 class Wedding(Certificate):
