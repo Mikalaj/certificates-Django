@@ -1,4 +1,4 @@
-from . models import Baptism, Wedding
+from .models import Baptism, Wedding
 from django.urls import path
 from . import views
 
@@ -17,3 +17,10 @@ urlpatterns = [
     path('wedding/<int:pk>/edit/', views.wedding_update, name="wedding_edit"),
     path('wedding/<int:pk>/delete/', views.wedding_delete, name="wedding_delete"),
 ]
+
+api_patterns = [
+    path('api/baptism/', views.api_baptism_list),
+    path('api/baptism/<int:pk>/', views.api_baptism_detail),
+]
+
+urlpatterns += api_patterns

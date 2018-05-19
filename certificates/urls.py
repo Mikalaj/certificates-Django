@@ -44,12 +44,9 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    # path('', views.home, name="home"),
     path('certs/', include('certs.urls')),
     path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
-    # path('api-auth/', include('rest_framework.urls')),
-    # path('login/', login, name='login'),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
