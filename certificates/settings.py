@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,7 @@ MEDIA_URL = '/media/'
     '%d %B %Y', '%d %B, %Y',            # '25 October 2006', '25 October, 2006'
     ]
 """
+#
+# LOGIN_URL = '/login/'
+#
+# LOGOUT_URL = '/logout/'

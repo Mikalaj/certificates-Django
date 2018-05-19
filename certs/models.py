@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
+from django.urls import reverse
 
 
 # Create your models here.
@@ -71,6 +72,9 @@ class Baptism(Certificate):
         verbose_name_plural = _("Хрышчэнні")
         unique_together = ('baptized_name', 'baptized_middle_name', 'baptized_surname')
         ordering = ["-date"]
+
+    # def get_absolute_url(self):
+    #     return reverse('baptism_edit', kwargs={'pk': self.pk})
 
 
 class Wedding(Certificate):

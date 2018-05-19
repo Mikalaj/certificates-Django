@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card text-muted font-weight-bold">
+                    <div class="card-header">
+                        Выдаліць хрышчэнне №{{ object.id }}?
+                    </div>
+                    <div class="card-body">
+
+                        <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                            Вы сапраўды жадаеце выдаліць хрышчэнне <br />
+                            "{{ object }}" ?
+                        </h5>
+                    </div>
+                        <form enctype="multipart/form-data" method="post">{% csrf_token %}
+                            <input class="btn btn-danger btn-sm col-md-2" type="submit" value="Выдаліць"/>
+                        </form>
+                    </div>
+                    <a class="btn btn-primary" href="{% url 'baptism_list' %}">Адмена</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

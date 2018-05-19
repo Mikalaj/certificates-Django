@@ -1,7 +1,14 @@
-body {
-  padding-top: 5rem;
+form label {
+    text-align: right;
+    float: left;
 }
-.starter-template {
-  padding: 3rem 1.5rem;
-  text-align: center;
+
+form input {
+    float: right;
+    width: 100%;
+}
+
+form select {
+    float: right;
+    width: 100%;
 }

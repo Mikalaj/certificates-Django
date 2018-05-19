@@ -1,0 +1,90 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static '/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/css/custom.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+          type="text/css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static '/css/landing-page.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            Certificates
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-link"><a class="btn btn-primary btn-sm" href="{% url 'baptism_list' %}">Хрышчэнні</a></li>
+                <li class="nav-link"><a class="btn btn-primary btn-sm" href="{% url 'wedding_list' %}">Вянчанні</a></li>
+                {% block nav %}
+                {% endblock %}
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-link">
+                    {% if user.is_authenticated %}
+                        Welcome, {{ user.username }} <a href="{% url 'logout' %}">[logout]</a>
+                    {% else %}
+                        Welcome, Guest <a href="{% url 'login' %}">[login]</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 col-xl-8 mx-auto">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="{% static '/js/jquery-slim.min.js' %}"><\/script>')</script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
