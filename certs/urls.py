@@ -1,6 +1,6 @@
-from .models import Baptism, Wedding
 from django.urls import path
-from . import views
+from . import views, apiviews
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     path('', views.index, name="index"),
@@ -19,8 +19,10 @@ urlpatterns = [
 ]
 
 api_patterns = [
-    path('api/baptism/', views.api_baptism_list),
-    path('api/baptism/<int:pk>/', views.api_baptism_detail),
+    path('api/baptism/', apiviews.api_baptism_list),
+    path('api/baptism/<int:pk>/', apiviews.api_baptism_detail),
 ]
+
+api_patterns = format_suffix_patterns(api_patterns)
 
 urlpatterns += api_patterns
