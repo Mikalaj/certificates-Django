@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6"><a class="btn btn-outline-primary btn-lg" href="{% url 'baptism_list' %}">Хрышчэнні</a>
+        </div>
+        <div class="col-md-6"><a class="btn btn-outline-primary btn-lg  " href="{% url 'wedding_list' %}">Вянчанні</a>
+        </div>
+    </div>
+{% endblock %}

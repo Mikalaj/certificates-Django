@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.urls import path, include
-from certs import views
 from rest_framework import routers, serializers, viewsets
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.auth.views import login
+
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -25,10 +28,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ('url', 'username', 'email', 'is_staff')
 
+
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -41,6 +46,11 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # path('', views.home, name="home"),
     path('certs/', include('certs.urls')),
+    path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
-    # path('api-auth/', include('rest_framework.urls'))
+    # path('api-auth/', include('rest_framework.urls')),
+    # path('login/', login, name='login'),
+
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block nav %}
+    <li class="nav-link"><a class="btn btn-info btn-sm" href="{% url "baptism_create" %}">Новае Хрышчэнне</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="starter-template">
+        <h2>Хрышчэнні</h2>
+
+        <div class="list-group">
+            {% for sacrament in object_list %}
+
+                <a href="{% url "baptism_detail" sacrament.id %}"
+                   class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                            {{ sacrament }}
+                        </h5>
+                        <small>{{ sacrament.date }}</small>
+                    </div>
+                    <p class="mb-1">Таінства здзейсніў {{ sacrament.priest }}</p>
+                </a>
+                {% if sacrament.certificate %}
+                    <a class="btn btn-primary" href="{{ sacrament.certificate.url }}">Файл пасведчання</a>
+                {% endif %}
+
+                <div class="form-group row col-md-auto">
+                    <a class="btn btn-success col-md-6" href="{% url "baptism_edit" sacrament.id %}">Edit</a>
+                    <a class="btn btn-danger col-md-6" href="{% url "baptism_delete" sacrament.id %}">Delete</a>
+                </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
