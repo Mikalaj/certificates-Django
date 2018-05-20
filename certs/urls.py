@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views, apiviews
+from . import views, api
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
@@ -18,9 +18,27 @@ urlpatterns = [
     path('wedding/<int:pk>/delete/', views.wedding_delete, name="wedding_delete"),
 ]
 
+# API endpoints
 api_patterns = [
-    path('api/baptism/', apiviews.api_baptism_list),
-    path('api/baptism/<int:pk>/', apiviews.api_baptism_detail),
+    path('api/', api.api_root),
+    path('api/baptism/',
+         api.BaptismList.as_view(),
+         name='baptism-list'),
+    path('api/baptism/<int:pk>/',
+         api.BaptismDetail.as_view(),
+         name='baptism-detail'),
+    path('api/wedding/',
+         api.WeddingList.as_view(),
+         name='wedding-list'),
+    path('api/wedding/<int:pk>/',
+         api.WeddingDetail.as_view(),
+         name='wedding-detail'),
+    path('api/clergy/',
+         api.ClergyList.as_view(),
+         name='clergy-list'),
+    path('api/clergy/<int:pk>/',
+         api.ClergyDetail.as_view(),
+         name='clergy-detail'),
 ]
 
 api_patterns = format_suffix_patterns(api_patterns)
