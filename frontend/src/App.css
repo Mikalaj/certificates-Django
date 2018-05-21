@@ -26,3 +26,18 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+form label {
+    text-align: right;
+    float: left;
+}
+
+form input {
+    float: right;
+    width: 100%;
+}
+
+form select {
+    float: right;
+    width: 100%;
+}
