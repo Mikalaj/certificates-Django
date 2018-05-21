@@ -102,3 +102,4 @@ class Wedding(Certificate):
         unique_together = (
             'fiance_name', 'fiance_middle_name', 'fiance_surname',
             'fiancee_name', 'fiancee_middle_name', 'fiancee_surname')
+        ordering = ["-date"]
