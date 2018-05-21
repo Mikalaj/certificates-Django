@@ -4,7 +4,7 @@ from .models import Baptism, Wedding, Clergy
 
 class BaptismSerializer(serializers.HyperlinkedModelSerializer):
     # priest = ClergySerializer()
-    priest = serializers.ReadOnlyField(source='clergy')
+    # priest = serializers.ReadOnlyField(source='clergy')
 
     class Meta:
         model = Baptism
@@ -25,9 +25,9 @@ class WeddingSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ClergySerializer(serializers.HyperlinkedModelSerializer):
-    baptisms = serializers.HyperlinkedRelatedField(many=True, view_name='baptism-detail', read_only=True)
-
+    # baptisms = serializers.HyperlinkedRelatedField(many=True, view_name='baptism-detail', read_only=True)
+    # baptisms = serializers.HyperlinkedRelatedField()
     class Meta:
         model = Clergy
-        fields = ['url', 'id', 'dignity', 'name', 'baptisms']
+        fields = ['url', 'id', 'dignity', 'name',]
 

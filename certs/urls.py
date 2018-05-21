@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views, api
 from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework.authtoken import views as drf_views
 
 urlpatterns = [
+    path('auth/', drf_views.obtain_auth_token, name='auth'),
     path('', views.index, name="index"),
 
     path('baptism/', views.baptism_list, name="baptism_list"),

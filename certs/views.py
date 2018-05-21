@@ -20,8 +20,6 @@ class BaptismForm(ModelForm):
 
 
 class WeddingForm(ModelForm):
-    # required_css_class = 'left-side'
-
     class Meta:
         model = Wedding
         fields = ['date', 'number', 'priest', 'certificate',
@@ -70,11 +68,9 @@ def baptism_list(request, template_name='certs/baptism_list.html'):
 @login_required
 def baptism_detail(request, pk, template_name='certs/baptism_detail.html'):
     baptism = get_object_or_404(Baptism, pk=pk)
-    serializer = BaptismSerializer(Baptism.objects.all(), many=True)
-    content = JSONRenderer().render(serializer.data)
     form = ReadOnlyBaptismForm(instance=baptism)
     return render(request, template_name,
-                  {'form': form, 'baptism': baptism, 'serializer': serializer, 'content': content})
+                  {'form': form, 'baptism': baptism})
 
 
 @login_required
